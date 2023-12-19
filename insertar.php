@@ -9,8 +9,12 @@
         $parcial = $_POST['txtParcial'];
         $final = $_POST['txtFinal'];
 
-        $sentencia = $bd->prepare("INSERT INTO alumno VALUES(?,?,?,?,?);");
+        $sentencia = $bd->prepare("INSERT INTO alumno(ap_paterno, ap_materno, nombre, ex_parcial, ex_final) VALUES(?,?,?,?,?);");
         $resultado = $sentencia->execute([$paterno, $materno, $nombre, $parcial, $final]);
     
-    
+    if ($resultado === TRUE){
+        echo "Insertado correctamente";
+    }else{
+        echo "Ocurrió un error";
+    }
 ?>
